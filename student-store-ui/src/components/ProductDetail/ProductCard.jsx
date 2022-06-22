@@ -13,6 +13,7 @@ export default function ProductCard( {product, productId, quantity, handleAddIte
             <button onClick={handleRemoveItemToCart(productId)}>-</button>   
             {quantity > 0 ? <p className="product-quantity">{quantity}</p> : null}
         </div>
+        {showDescription == true ? <p className="product-description">{product.description}</p> : null}
     </div>
   )
 }
