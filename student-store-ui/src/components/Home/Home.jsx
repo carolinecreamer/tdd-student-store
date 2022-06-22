@@ -4,7 +4,8 @@ import "./Home.css"
 export default function Home() {
   return (
     <div className="home">
-      <p>Home</p>
+      <p>Home (Product Grid)</p>
     </div>
   )
 }
+
