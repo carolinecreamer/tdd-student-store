@@ -13,12 +13,18 @@ import { useState } from "react"
 
 
 export default function App() {
-  const [data, setData] = useState("");
+  const [products, setProducts] = useState("");
+  const [isFetching, setIsFetching] = useState(false);
+  const [error, setError] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [shoppingCart, setShoppingCart] = useState([]);
+  const [checkoutForm, setCheckoutForm] = useState("");
+  
   React.useEffect(()=>{
     let setup = async()=>{
       const response = await axios.get(`https://codepath-store-api.herokuapp.com/store`)
       console.log(response.data)
-      setData(response.data)
+      setProducts(response.data)
     }
     setup();
   },[])
