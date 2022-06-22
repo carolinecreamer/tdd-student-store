@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar"
 import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
 import ProductCard from "../ProductDetail/ProductCard"
-import ProductGrid from "../ProductDetail/ProductGrid"
+
 import NotFound from "../NotFound/NotFound"
 import Footer from "../Footer/Footer"
 import {BrowserRouter,Routes,Route} from "react-router-dom"
@@ -51,8 +51,7 @@ if(isFetching){
       <Route path ="/" element={ <main>
           <Navbar key="NavBar" navLinks={navLinks}/>
           <Sidebar />
-          <Home />
-          <ProductGrid products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
+          <Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
           <NotFound />
           <Footer />
         </main>}/>
