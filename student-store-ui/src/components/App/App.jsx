@@ -20,7 +20,9 @@ export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [checkoutForm, setCheckoutForm] = useState("");
-console.log(isOpen)
+  const [category, setCategory] = useState("all-categories")
+  const [productsFiltered, setProductsFiltered] = useState(products);
+
   function handleAddItemToCart(productId) {
 
   }
@@ -46,18 +48,39 @@ console.log(isOpen)
     }
   }
 
+  function handleChangeCategory(categoryName) {
+    setCategory(categoryName);
+
+
+  }
+  function filtered(p){
+    if (category === "all-categories") {
+      setProductsFiltered(p);
+    }
+    else {
+      setProductsFiltered(p.filter((item)=>item.category === category));
+    }
+  }
+
   React.useEffect(()=>{
     setIsFetching(true)
+
     let setup = async()=>{
       const response = await axios.get(`https://codepath-store-api.herokuapp.com/store/`).catch((err)=>{
         setError(err)
       })
       console.log(response.data)
+      filtered(response.data.products)
       setProducts(response.data.products)
+
       setIsFetching(false)
     }
     setup();
   },[])
+  
+  React.useEffect(()=>{
+    filtered(products)
+  },[category])
 
   return (
     <div className="app">
@@ -66,7 +89,7 @@ console.log(isOpen)
       <Route path ="/" element={ <main>
           <Navbar key="NavBar" navLinks={navLinks} setIsFetching={setIsFetching}/>
           <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
-          <Home isFetching={isFetching} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching}/>
+          <Home isFetching={isFetching} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching} productsFiltered={productsFiltered} handleChangeCategory={handleChangeCategory}/>
           <Footer />
         </main>}/>
         <Route path="/product/:productId" element={
@@ -74,6 +97,14 @@ console.log(isOpen)
             <Navbar key="NavBar" navLinks={navLinks}/>
             <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
             <ProductDetail setIsFetching={setIsFetching} isFetching={isFetching} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
+            <Footer/>
+          </main>
+        }/>
+        <Route path="/product/*" element={
+          <main>
+            <Navbar key="NavBar" navLinks={navLinks}/>
+            <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
+            <NotFound/>
             <Footer/>
           </main>
         }/>

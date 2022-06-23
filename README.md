@@ -12,7 +12,7 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 
 - [x] Displays the following sections: header, banner, search, product grid, about, contact, and footer.
 - [x] On initial page load, display the products at the [GET /store endpoint](https://codepath-store-api.herokuapp.com/store).
-- [ ] User can click on the categories (Clothing, food, etc) to filter the product grid by type.
+- [x] User can click on the categories (Clothing, food, etc) to filter the product grid by type.
 - [ ] User can search for products.
 - [x] User can click on a product in the grid to view additional product details. Navigation is via a React Router.
 - [ ] User can click to expand the shopping cart in the left navigation.
@@ -37,11 +37,11 @@ The following specifications were met on the Express backend and the React front
 
 **App.jsx**
 
-  - [ ] The core App component that contains the routes for the app and does the initial data fetching
-  - [ ] Renders a `BrowserRouter` component that contains a `Routes` component with the following routes:
+  - [x] The core App component that contains the routes for the app and does the initial data fetching
+  - [x] Renders a `BrowserRouter` component that contains a `Routes` component with the following routes:
     - [x] `/` - Should render the `Home.jsx` component
     - [x] `/products/:productId` - should render the `ProductDetail` component
-    - [ ] `*` - anything else should render the `NotFound` component
+    - [x] `*` - anything else should render the `NotFound` component
   - [x] Renders the `Navbar` component on every route
   - [x] Renders the `Sidebar` component on every route
   - [x] Should create **at least** the following state variables:

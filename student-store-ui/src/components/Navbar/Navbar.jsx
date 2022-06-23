@@ -23,9 +23,9 @@ export function NavLinks({ navLinks }) {
 
 export function NavLink({ navLink }) {
   return (
-    <p className={navLink.className}>
+    <button className={navLink.className}>
       <i className={navLink.icon}></i>
       <span>{navLink.label}</span>
-    </p>
+    </button>
   )
 }
