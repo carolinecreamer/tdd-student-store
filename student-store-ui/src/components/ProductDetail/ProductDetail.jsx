@@ -3,7 +3,8 @@ import "./ProductView.css"
 import { useParams } from "react-router-dom"
 import ProductView from "./ProductView";
 import axios from "axios";
-import NotFound from "./NotFound"
+import NotFound from "./NotFound";
+
 export default function ProductDetail( {handleAddItemToCart, handleRemoveItemToCart, setIsFetching, isFetching}) {
     const [product, setProduct] = useState([]);
     const [error, setError] = useState("");
