@@ -22,7 +22,9 @@ export default function App() {
   const [checkoutForm, setCheckoutForm] = useState("");
   const [category, setCategory] = useState("all-categories")
   const [productsFiltered, setProductsFiltered] = useState(products);
+  const [search, setSearch] = useState("");
 
+  console.log(search)
   function handleAddItemToCart(productId) {
 
   }
@@ -50,15 +52,24 @@ export default function App() {
 
   function handleChangeCategory(categoryName) {
     setCategory(categoryName);
-
-
   }
+
   function filtered(p){
     if (category === "all-categories") {
       setProductsFiltered(p);
     }
     else {
       setProductsFiltered(p.filter((item)=>item.category === category));
+    }
+  }
+
+  function handleSearch(search) {
+    setSearch(search);
+  }
+
+  function searched(p) {
+    if (searched != "") {
+      setProductsFiltered(p.filter((item)=>item.name.toLowerCase().includes(search.toLowerCase())));
     }
   }
 
@@ -82,28 +93,41 @@ export default function App() {
     filtered(products)
   },[category])
 
+  React.useEffect(()=>{
+    searched(products)
+  },[search])
+
   return (
     <div className="app">
       <BrowserRouter>
       <Routes>
       <Route path ="/" element={ <main>
           <Navbar key="NavBar" navLinks={navLinks} setIsFetching={setIsFetching}/>
-          <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
-          <Home isFetching={isFetching} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching} productsFiltered={productsFiltered} handleChangeCategory={handleChangeCategory}/>
+          <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
+                   checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
+                   handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
+          <Home isFetching={isFetching} products={products} handleAddItemToCart={handleAddItemToCart} 
+                handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching} 
+                productsFiltered={productsFiltered} handleChangeCategory={handleChangeCategory} setSearch={setSearch}/>
           <Footer />
         </main>}/>
         <Route path="/product/:productId" element={
           <main>
             <Navbar key="NavBar" navLinks={navLinks}/>
-            <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
-            <ProductDetail setIsFetching={setIsFetching} isFetching={isFetching} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
+            <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
+                     checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
+                     handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
+            <ProductDetail setIsFetching={setIsFetching} isFetching={isFetching} 
+                           handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
             <Footer/>
           </main>
         }/>
         <Route path="/product/*" element={
           <main>
             <Navbar key="NavBar" navLinks={navLinks}/>
-            <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
+            <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
+                     checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
+                     handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
             <NotFound/>
             <Footer/>
           </main>
