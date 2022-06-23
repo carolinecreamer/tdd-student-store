@@ -2,11 +2,11 @@ import * as React from "react"
 import "./Navbar.css"
 import Logo from "./Logo"
 
-export default function Navbar({ navLinks }) {
+export default function Navbar({ navLinks}) {
   return (
     <div className="navbar">
       <div className="navbar-container">
-        <Logo/>
+        <Logo />
         <NavLinks key="NavLinks" navLinks={navLinks}/>
       </div>
     </div>

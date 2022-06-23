@@ -11,7 +11,7 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 #### Core Features
 
 - [x] Displays the following sections: header, banner, search, product grid, about, contact, and footer.
-- [ ] On initial page load, display the products at the [GET /store endpoint](https://codepath-store-api.herokuapp.com/store).
+- [x] On initial page load, display the products at the [GET /store endpoint](https://codepath-store-api.herokuapp.com/store).
 - [ ] User can click on the categories (Clothing, food, etc) to filter the product grid by type.
 - [ ] User can search for products.
 - [ ] User can click on a product in the grid to view additional product details. Navigation is via a React Router.
@@ -98,12 +98,12 @@ The following specifications were met on the Express backend and the React front
 **Navbar.jsx**
 
   - [x] Should render JSX that is wrapped by a `nav` element with a `className` of `navbar`
-  - [ ] Should render the `Logo` component that links to the `/` route when clicked
+  - [x] Should render the `Logo` component that links to the `/` route when clicked
 
 **Logo.jsx**
 
   - [x] Should render JSX that is wrapped by a `div` element with a `className` of `logo`
-  - [ ] Should use the `Link` component from `react-router-dom` to link to the home route (`/`) when clicked
+  - [x] Should use the `Link` component from `react-router-dom` to link to the home route (`/`) when clicked
 
 **Home.jsx**
 
@@ -182,8 +182,8 @@ The following specifications were met on the Express backend and the React front
 
 **Sidebar.jsx**
 
-  - [ ] Should render JSX that is wrapped by a `section` element with the `className` of `sidebar`
-  - [ ] Should accept **at least** the following props (and probably a few more):
+  - [x] Should render JSX that is wrapped by a `section` element with the `className` of `sidebar`
+  - [x] Should accept **at least** the following props (and probably a few more):
     - `isOpen` - boolean representing the open/closed state of the Sidebar
     - `shoppingCart` - the active user's cart formatted as an array of objects with `itemId` and `quantity` keys
     - `products` - the array of products fetched from the API

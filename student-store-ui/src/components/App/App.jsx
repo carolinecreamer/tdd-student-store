@@ -47,14 +47,18 @@ export default function App() {
       <BrowserRouter>
       <Routes>
       <Route path ="/" element={ <main>
-          <Navbar key="NavBar" navLinks={navLinks}/>
+          <Navbar key="NavBar" navLinks={navLinks} setIsFetching={setIsFetching}/>
           <Sidebar />
-          <Home isFetching = {isFetching}products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching}/>
-          <NotFound />
+          <Home isFetching={isFetching} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching}/>
           <Footer />
         </main>}/>
         <Route path="/product/:productId" element={
-          <ProductDetail setIsFetching={setIsFetching} isFetching={isFetching} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
+          <main>
+            <Navbar key="NavBar" navLinks={navLinks}/>
+            <Sidebar />
+            <ProductDetail setIsFetching={setIsFetching} isFetching={isFetching} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
+            <Footer/>
+          </main>
         }/>
         </Routes>
       </BrowserRouter>
