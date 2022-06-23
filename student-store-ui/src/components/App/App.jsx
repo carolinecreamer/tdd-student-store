@@ -20,13 +20,30 @@ export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [checkoutForm, setCheckoutForm] = useState("");
-
-  function handleAddItemToCart() {
+console.log(isOpen)
+  function handleAddItemToCart(productId) {
 
   }
 
-  function handleRemoveItemToCart() {
+  function handleRemoveItemToCart(productId) {
 
+  }
+
+  function handleOnCheckoutFormChange(name, value) {
+
+  }
+
+  function handleOnSubmitCheckoutForm() {
+
+  }
+
+  function handleOnToggle() {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+    else {
+      setIsOpen(true);
+    }
   }
 
   React.useEffect(()=>{
@@ -48,14 +65,14 @@ export default function App() {
       <Routes>
       <Route path ="/" element={ <main>
           <Navbar key="NavBar" navLinks={navLinks} setIsFetching={setIsFetching}/>
-          <Sidebar />
+          <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
           <Home isFetching={isFetching} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching}/>
           <Footer />
         </main>}/>
         <Route path="/product/:productId" element={
           <main>
             <Navbar key="NavBar" navLinks={navLinks}/>
-            <Sidebar />
+            <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
             <ProductDetail setIsFetching={setIsFetching} isFetching={isFetching} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
             <Footer/>
           </main>

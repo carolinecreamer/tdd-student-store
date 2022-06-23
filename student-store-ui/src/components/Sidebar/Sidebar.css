@@ -1,0 +1,10 @@
+.closed {
+    width: 150px;
+}
+.sidebar{
+    background: gray ;
+}
+
+.open {
+  width: 350px;
+}
