@@ -1,11 +1,13 @@
 import * as React from "react"
 import "./ProductView.css"
+import {Link} from "react-router-dom"
 
-export default function ProductCard( {product, productId, quantity, handleAddItemToCart, handleRemoveItemToCart, showDescription}) {
-    
+export default function ProductCard( {product, productId, quantity, handleAddItemToCart, handleRemoveItemToCart, showDescription, setIsFetching}) {
+  console.log(productId)
   return (
     <div className="product-card">
-        <img src={product.image}/>
+      <Link onClick={()=>setIsFetching(true)} to={`/product/${productId}`} className="media"><img src={product.image}/></Link>
+        
         <h3 className="product-name text">{product.name}</h3>
         <p className="product-price text">{product.price.toFixed(2)}</p>
         <div className="quantity">

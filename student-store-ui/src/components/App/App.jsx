@@ -2,7 +2,7 @@ import * as React from "react"
 import Navbar from "../Navbar/Navbar"
 import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
-import ProductCard from "../ProductDetail/ProductCard"
+import ProductDetail from "../ProductDetail/ProductDetail"
 
 import NotFound from "../NotFound/NotFound"
 import Footer from "../Footer/Footer"
@@ -32,7 +32,7 @@ export default function App() {
   React.useEffect(()=>{
     setIsFetching(true)
     let setup = async()=>{
-      const response = await axios.get(`https://codepath-store-api.herokuapp.com/store`).catch((err)=>{
+      const response = await axios.get(`https://codepath-store-api.herokuapp.com/store/`).catch((err)=>{
         setError(err)
       })
       console.log(response.data)
@@ -41,9 +41,7 @@ export default function App() {
     }
     setup();
   },[])
-if(isFetching){
-  return <div>Loading...</div>
-}
+
   return (
     <div className="app">
       <BrowserRouter>
@@ -51,12 +49,12 @@ if(isFetching){
       <Route path ="/" element={ <main>
           <Navbar key="NavBar" navLinks={navLinks}/>
           <Sidebar />
-          <Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
+          <Home isFetching = {isFetching}products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching}/>
           <NotFound />
           <Footer />
         </main>}/>
-        <Route path="/products/:productId" element={
-          <ProductCard/>
+        <Route path="/product/:productId" element={
+          <ProductDetail setIsFetching={setIsFetching} isFetching={isFetching} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
         }/>
         </Routes>
       </BrowserRouter>

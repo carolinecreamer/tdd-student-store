@@ -3,11 +3,14 @@ import ProductGrid from "../ProductDetail/ProductGrid"
 import Hero from "./Hero"
 import "./Home.css"
 
-export default function Home({products, handleAddItemToCart, handleRemoveItemToCart}) {
+export default function Home({products, handleAddItemToCart, handleRemoveItemToCart, setIsFetching, isFetching}) {
+  if(isFetching){
+    return null;
+  }
   return (
     <div className="home">
       <Hero></Hero>
-      <ProductGrid products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
+      <ProductGrid products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching}/>
     </div>
   )
 }
