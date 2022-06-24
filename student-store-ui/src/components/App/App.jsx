@@ -26,6 +26,8 @@ export default function App() {
   const [total, setTotal] = useState(0);
   const [success, setSuccess] = useState(false);
   const [confirmation, setConfirmation] = useState(false);
+  const [subtotal, setSubtotal] = useState("");
+  const [response, setResponse] = useState("");
 
   function handleAddItemToCart(productId) {
     let found = false;
@@ -68,27 +70,22 @@ export default function App() {
   }
 
   function handleOnSubmitCheckoutForm() {
-//post request here
-    console.log(checkoutForm, shoppingCart);
     axios.post('https://codepath-store-api.herokuapp.com/store/', {
       user: checkoutForm,
       shoppingCart: shoppingCart
       // iterate over cart
     })
     .then(function (response) {
-      if (response.status === 201) {
-        setConfirmation(true);
-        setSuccess(true);
-        setShoppingCart([]);
-        setCheckoutForm("");
-      }
-      else {
-        setConfirmation(true);
-      }
+      setResponse(response);
+      setConfirmation(true);
+      setSuccess(true);
+      setShoppingCart([]);
+      setCheckoutForm("");
       // if response = 201 output success message
     })
     .catch(function (error) {
       console.log(error);
+      setConfirmation(true);
     });
   }
 
@@ -157,7 +154,7 @@ export default function App() {
           <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                    checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                    handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} setTotal={setTotal} total={total}
-                   success={success} confirmation={confirmation}/>
+                   success={success} confirmation={confirmation} response={response}/>
           <Home isFetching={isFetching} products={products} handleAddItemToCart={handleAddItemToCart} 
                 handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching} 
                 productsFiltered={productsFiltered} handleChangeCategory={handleChangeCategory} setSearch={setSearch}/>
@@ -169,7 +166,7 @@ export default function App() {
             <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                      checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                      handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} setTotal={setTotal} total={total}
-                     success={success} confirmation={confirmation}/>
+                     success={success} confirmation={confirmation} response={response}/>
             <ProductDetail setIsFetching={setIsFetching} isFetching={isFetching} 
                            handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
             <Footer/>

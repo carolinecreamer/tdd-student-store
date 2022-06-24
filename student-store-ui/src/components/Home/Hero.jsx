@@ -2,7 +2,7 @@ import * as React from "react"
 //import ProductGrid from "../ProductDetail/ProductGrid"
 import "./Home.css"
 
-export default function Home({products, handleAddItemToCart, handleRemoveItemToCart}) {
+export default function Hero({products, handleAddItemToCart, handleRemoveItemToCart}) {
   return (
     <div className="hero">
       <h1 className="intro">Welcome!</h1>

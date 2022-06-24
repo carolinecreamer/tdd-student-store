@@ -1,11 +1,8 @@
 import * as React from "react"
 import "./Sidebar.css"
 
-export default function CheckoutForm({isOpen, shoppingCart, checkoutForm, handleOnCheckoutFormChange, 
+export default function CheckoutForm({checkoutForm, handleOnCheckoutFormChange, 
     handleOnSubmitCheckoutForm, success, confirmation}) {
-       // {shoppingCart:shoppingCart,}
-       console.log(success);
-       console.log(confirmation);
     return (
         <div className="checkout-form">
             <input className="checkout-form-input" type="email" name="email" placeholder="student@codepath.org" 
@@ -14,7 +11,7 @@ export default function CheckoutForm({isOpen, shoppingCart, checkoutForm, handle
             value={checkoutForm.name} onChange={(e)=>handleOnCheckoutFormChange(e.target.value, "name")}></input>
             <button className="checkout-button" onClick={()=>handleOnSubmitCheckoutForm()}>Checkout</button>
             {(success && confirmation) ? <p className="success">Your order has been confirmed!</p> : null}
-            {(!success && confirmation) ? <p className="error">Error! Please try again later.</p> : null}
+            {((!success) && confirmation) ? <p className="error">Error! Please try again later.</p> : null}
          </div>
     )
 }   
