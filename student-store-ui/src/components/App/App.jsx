@@ -24,8 +24,8 @@ export default function App() {
   const [productsFiltered, setProductsFiltered] = useState(products);
   const [search, setSearch] = useState("");
   const [total, setTotal] = useState(0);
-  const [nameVar, setNameVar] = useState("");
-  const [emailVar, setEmailVar] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [confirmation, setConfirmation] = useState(false);
 
   function handleAddItemToCart(productId) {
     let found = false;
@@ -60,15 +60,36 @@ export default function App() {
 
   function handleOnCheckoutFormChange(item, type) {
     if (type == "name") {
-      setNameVar(item)
+      setCheckoutForm({"name": item, "email": checkoutForm.email})
     }
     else if (type == "email") {
-      setEmailVar(item)
+      setCheckoutForm({"name": checkoutForm.name, "email": item})
     }
   }
 
   function handleOnSubmitCheckoutForm() {
 //post request here
+    console.log(checkoutForm, shoppingCart);
+    axios.post('https://codepath-store-api.herokuapp.com/store/', {
+      user: checkoutForm,
+      shoppingCart: shoppingCart
+      // iterate over cart
+    })
+    .then(function (response) {
+      if (response.status === 201) {
+        setConfirmation(true);
+        setSuccess(true);
+        setShoppingCart([]);
+        setCheckoutForm("");
+      }
+      else {
+        setConfirmation(true);
+      }
+      // if response = 201 output success message
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   function handleOnToggle() {
@@ -125,6 +146,8 @@ export default function App() {
     searched(products)
   },[search])
 
+
+
   return (
     <div className="app">
       <BrowserRouter>
@@ -134,7 +157,7 @@ export default function App() {
           <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                    checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                    handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} setTotal={setTotal} total={total}
-                   nameVar={nameVar} emailVar={emailVar}/>
+                   success={success} confirmation={confirmation}/>
           <Home isFetching={isFetching} products={products} handleAddItemToCart={handleAddItemToCart} 
                 handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching} 
                 productsFiltered={productsFiltered} handleChangeCategory={handleChangeCategory} setSearch={setSearch}/>
@@ -146,7 +169,7 @@ export default function App() {
             <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                      checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                      handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} setTotal={setTotal} total={total}
-                     nameVar={nameVar} emailVar={emailVar}/>
+                     success={success} confirmation={confirmation}/>
             <ProductDetail setIsFetching={setIsFetching} isFetching={isFetching} 
                            handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
             <Footer/>
