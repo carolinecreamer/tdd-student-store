@@ -30,7 +30,9 @@ export default function ProductDetail( {handleAddItemToCart, handleRemoveItemToC
     if(product) {
         return (
             <div className="product-detail">
-                <ProductView product={product} productId={product.id} quantity={0} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} showDescription={true}/>
+                <ProductView product={product} productId={product.id} quantity={0} 
+                handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} 
+                showDescription={true}/>
             </div>
         )
     }

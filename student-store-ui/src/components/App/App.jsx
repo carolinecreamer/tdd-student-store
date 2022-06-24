@@ -24,13 +24,44 @@ export default function App() {
   const [productsFiltered, setProductsFiltered] = useState(products);
   const [search, setSearch] = useState("");
 
-  console.log(search)
+  console.log(shoppingCart)
   function handleAddItemToCart(productId) {
+    let found = false;
+    shoppingCart.forEach((item)=>{
+      if (item.itemId === productId) {
+        item.quantity++;
+        found = true;
+      }
+    });
 
+    if (!found) {
+      let newItem = {"itemId": productId, "quantity": 1};
+      setShoppingCart((previousArray)=>[...previousArray, newItem]);
+      return
+    }
+    setShoppingCart([...shoppingCart])
   }
 
   function handleRemoveItemToCart(productId) {
+    let found = false;
+    shoppingCart.forEach((item, idx)=>{
+      if (item.itemId === productId) {
+        item.quantity--;
+        found = true;
 
+        if (item.quantity <= 0) {
+          shoppingCart.splice(idx,1)
+          setShoppingCart([...shoppingCart])
+        }
+      }
+    });
+
+    if (!found) {
+      let newItem = {"itemId": productId, "quantity": 1};
+      setShoppingCart((previousArray)=>[...previousArray, newItem]);
+      return
+    }
+    setShoppingCart([...shoppingCart])
   }
 
   function handleOnCheckoutFormChange(name, value) {
@@ -80,10 +111,8 @@ export default function App() {
       const response = await axios.get(`https://codepath-store-api.herokuapp.com/store/`).catch((err)=>{
         setError(err)
       })
-      console.log(response.data)
       filtered(response.data.products)
       setProducts(response.data.products)
-
       setIsFetching(false)
     }
     setup();
