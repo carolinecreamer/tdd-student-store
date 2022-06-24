@@ -43,25 +43,17 @@ export default function App() {
   }
 
   function handleRemoveItemToCart(productId) {
-    let found = false;
     shoppingCart.forEach((item, idx)=>{
       if (item.itemId === productId) {
-        item.quantity--;
-        found = true;
-
-        if (item.quantity <= 0) {
+        if (item.quantity > 0) {
+          item.quantity--;
+        }
+        if (item.quantity == 0) {
           shoppingCart.splice(idx,1)
           setShoppingCart([...shoppingCart])
         }
       }
     });
-
-    if (!found) {
-      let newItem = {"itemId": productId, "quantity": 1};
-      setShoppingCart((previousArray)=>[...previousArray, newItem]);
-      return
-    }
-    setShoppingCart([...shoppingCart])
   }
 
   function handleOnCheckoutFormChange(name, value) {

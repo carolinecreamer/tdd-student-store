@@ -16,7 +16,7 @@ export default function Sidebar({isOpen, products, shoppingCart}) {
     return (
         <div className="shopping-cart">
             {shoppingCart.map((item, idx) => 
-                <div>
+                <div key={idx}>
                     <span className="cart-product-name">{(products.find((i)=>i.id === item.itemId)).name}</span>
                     <span className="cart-product-quantity">{item.quantity}</span>
                     <span className="cart-product-unit-price">${(products.find((i)=>i.id === item.itemId)).price.toFixed(2)}</span>
