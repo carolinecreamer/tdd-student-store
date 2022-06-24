@@ -1,11 +1,13 @@
 import * as React from "react"
-import "./ShoppingCart.css"
+import "./Sidebar.css"
 
-export default function Sidebar({isOpen, products, shoppingCart}) {
+export default function ShoppingCart({shoppingCart, products, setTotal, total}) {
     let cost = 0;
     shoppingCart.map((item, idx) => 
         cost += (products.find((i)=>i.id === item.itemId)).price * item.quantity
     )
+
+    setTotal((cost + (cost * 0.0875)).toFixed(2))
 
     if (shoppingCart.length == 0) {
         return (
@@ -32,9 +34,9 @@ export default function Sidebar({isOpen, products, shoppingCart}) {
                 <span>Taxes and Fees</span>
                 <span>${(cost*0.0875).toFixed(2)}</span>
             </div>
-            <div>
+            <div className="total-price">
                 <span>Total</span>
-                <span>${(cost + (cost * 0.0875)).toFixed(2)}</span>
+                <span>${total}</span>
             </div>
         </div>
         )

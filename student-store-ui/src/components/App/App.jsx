@@ -23,8 +23,10 @@ export default function App() {
   const [category, setCategory] = useState("all-categories")
   const [productsFiltered, setProductsFiltered] = useState(products);
   const [search, setSearch] = useState("");
+  const [total, setTotal] = useState(0);
+  const [nameVar, setNameVar] = useState("");
+  const [emailVar, setEmailVar] = useState("");
 
-  console.log(shoppingCart)
   function handleAddItemToCart(productId) {
     let found = false;
     shoppingCart.forEach((item)=>{
@@ -56,12 +58,17 @@ export default function App() {
     });
   }
 
-  function handleOnCheckoutFormChange(name, value) {
-
+  function handleOnCheckoutFormChange(item, type) {
+    if (type == "name") {
+      setNameVar(item)
+    }
+    else if (type == "email") {
+      setEmailVar(item)
+    }
   }
 
   function handleOnSubmitCheckoutForm() {
-
+//post request here
   }
 
   function handleOnToggle() {
@@ -126,7 +133,8 @@ export default function App() {
           <Navbar key="NavBar" navLinks={navLinks} setIsFetching={setIsFetching}/>
           <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                    checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
-                   handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
+                   handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} setTotal={setTotal} total={total}
+                   nameVar={nameVar} emailVar={emailVar}/>
           <Home isFetching={isFetching} products={products} handleAddItemToCart={handleAddItemToCart} 
                 handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching} 
                 productsFiltered={productsFiltered} handleChangeCategory={handleChangeCategory} setSearch={setSearch}/>
@@ -137,7 +145,8 @@ export default function App() {
             <Navbar key="NavBar" navLinks={navLinks}/>
             <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                      checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
-                     handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
+                     handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} setTotal={setTotal} total={total}
+                     nameVar={nameVar} emailVar={emailVar}/>
             <ProductDetail setIsFetching={setIsFetching} isFetching={isFetching} 
                            handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
             <Footer/>
