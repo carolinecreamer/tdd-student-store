@@ -7,11 +7,25 @@
   flex-direction: column;
 }
 
+.category{
+  background: none;
+  border: 0;
+  
+}
+  
+.underline{
+  border-bottom: 2px solid #06c085;
+  transition: .3s;
+}
+  
+
 .hero {
   display: flex;
   justify-content: center;
   flex-direction: row;
   align-items: center;
+  background-color: #06c085;
+  color: white;
 }
 
 .hero-img {
@@ -21,14 +35,26 @@
 }
 
 .categories {
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin: 15px;
   display: flex;
   justify-content: center;
   flex-direction: row;
   align-items: center;
+  color:#283d45;
+  
+}
+
+.category {
+  margin: 5px;
+  font-size: 20px;
 }
 
 button {
   margin: 0px;
+}
+
+.search-input {
+  width: 23%;
+  place-self: center;
+
 }

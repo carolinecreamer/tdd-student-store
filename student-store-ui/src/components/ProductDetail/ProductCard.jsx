@@ -10,8 +10,8 @@ export default function ProductCard( {product, productId, quantity, handleAddIte
         <h3 className="product-name text">{product.name}</h3>
         <p className="product-price text">{product.price.toFixed(2)}</p>
         <div className="quantity">
-            <button onClick={()=>handleAddItemToCart(productId)}>+</button>
-            <button onClick={()=>handleRemoveItemToCart(productId)}>-</button>   
+            <button class="quantity" onClick={()=>handleAddItemToCart(productId)}>+</button>
+            <button class="quantity"onClick={()=>handleRemoveItemToCart(productId)}>-</button>   
             {quantity > 0 ? <p className="product-quantity">{quantity}</p> : null}
         </div>
         {showDescription == true ? <p className="product-description">{product.description}</p> : null}

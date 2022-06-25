@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar"
 import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
 import ProductDetail from "../ProductDetail/ProductDetail"
-
+import Contact from "../Contact/Contact"
 import NotFound from "../NotFound/NotFound"
 import Footer from "../Footer/Footer"
 import {BrowserRouter,Routes,Route} from "react-router-dom"
@@ -150,25 +150,27 @@ export default function App() {
       <BrowserRouter>
       <Routes>
       <Route path ="/" element={ <main>
-          <Navbar key="NavBar" navLinks={navLinks} setIsFetching={setIsFetching}/>
           <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                    checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                    handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} setTotal={setTotal} total={total}
                    success={success} confirmation={confirmation} response={response}/>
-          <Home isFetching={isFetching} products={products} handleAddItemToCart={handleAddItemToCart} 
+          <Navbar key="NavBar" navLinks={navLinks} setIsFetching={setIsFetching}/>
+          <Home category = {category} isFetching={isFetching} products={products} handleAddItemToCart={handleAddItemToCart} 
                 handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching} 
                 productsFiltered={productsFiltered} handleChangeCategory={handleChangeCategory} setSearch={setSearch}/>
+          <Contact/>
           <Footer />
         </main>}/>
         <Route path="/product/:productId" element={
           <main>
-            <Navbar key="NavBar" navLinks={navLinks}/>
             <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                      checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                      handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} setTotal={setTotal} total={total}
                      success={success} confirmation={confirmation} response={response}/>
+            <Navbar key="NavBar" navLinks={navLinks}/>
             <ProductDetail setIsFetching={setIsFetching} isFetching={isFetching} 
                            handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
+            <Contact/>
             <Footer/>
           </main>
         }/>
@@ -179,6 +181,7 @@ export default function App() {
                      checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                      handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
             <NotFound/>
+            <Contact/>
             <Footer/>
           </main>
         }/>

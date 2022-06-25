@@ -1,0 +1,14 @@
+.contact {
+    
+    background-color: #06c085;
+    color: white;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.contactText {
+    margin: 10px;
+    align-self: center;
+    font-size: 15px;;
+}

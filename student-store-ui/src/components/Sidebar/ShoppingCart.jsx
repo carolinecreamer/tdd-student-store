@@ -6,7 +6,6 @@ export default function ShoppingCart({shoppingCart, products, setTotal, total, s
     shoppingCart.map((item, idx) => 
         cost += (products.find((i)=>i.id === item.itemId)).price * item.quantity
     )
-    setSubtotal(cost)
     setTotal((cost + (cost * 0.0875)).toFixed(2))
 
     if (shoppingCart.length == 0) {
@@ -16,15 +15,16 @@ export default function ShoppingCart({shoppingCart, products, setTotal, total, s
     }
     else {
     return (
+        <>
         <div className="shopping-cart">
             {shoppingCart.map((item, idx) => 
-                <div key={idx}>
-                    <span className="cart-product-name">{(products.find((i)=>i.id === item.itemId)).name}</span>
-                    <span className="cart-product-quantity">{item.quantity}</span>
-                    <span className="cart-product-unit-price">${(products.find((i)=>i.id === item.itemId)).price.toFixed(2)}</span>
-                    <span className="cart-product-unit-price">${(((products.find((i)=>i.id === item.itemId)).price)*item.quantity).toFixed(2)}</span>
-                </div>
-            )}
+                <>
+                    <span key={idx} className="cart-product-name">{(products.find((i)=>i.id === item.itemId)).name}</span>
+                    <span key={idx} className="cart-product-quantity">{item.quantity}</span>
+                    <span key={idx} className="cart-product-unit-price">${(products.find((i)=>i.id === item.itemId)).price.toFixed(2)}</span>
+                    <span key={idx} className="cart-product-unit-price">${(((products.find((i)=>i.id === item.itemId)).price)*item.quantity).toFixed(2)}</span>
+                </>
+            )}   </div>
 
             <div className="subtotal">
                 <span>Subtotal</span>
@@ -38,7 +38,8 @@ export default function ShoppingCart({shoppingCart, products, setTotal, total, s
                 <span>Total</span>
                 <span>${total}</span>
             </div>
-        </div>
+     
+        </>
         )
     }
 }

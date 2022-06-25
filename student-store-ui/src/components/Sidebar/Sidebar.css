@@ -1,8 +1,14 @@
 .closed {
     width: 150px;
 }
-.sidebar{
-    background: gray ;
+.sidebar {
+    background: #283d45 ;
+    height: 100vh;
+    position: fixed;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
 }
 
 .open {
@@ -11,4 +17,39 @@
 
 span {
   margin: 10px;
+}
+
+.toggle-button {
+  size: 50px;;
+  width: 50px;
+  height: 50px;
+  background-color: #283d45;
+  color: white;
+  border: 0px;
+  font-size: 50px;
+  margin: 20%;
+}
+
+.checkout-form {
+  margin: 10%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-form-input {
+  margin: 10px;
+}
+
+.checkout-button {
+  margin: 10px;
+  background-color: #283d45;
+  color: white;
+  font-size: 15px;
+  border: 2px white;
+}
+.shopping-cart{
+  display: grid;
+  grid-template-columns: repeat(4,87.5px);
+  width: 350px;
 }

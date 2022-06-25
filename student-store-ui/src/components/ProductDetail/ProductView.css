@@ -1,10 +1,33 @@
 .product-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    margin: 10px;
-    margin-left: 20%;
-    margin-right: 20%;
+
+    justify-items: center;
+    margin-left: 13%;
+    margin-right: 5%;
     align-items: center;
+}
+
+.product-id {
+    margin-bottom: 5px;
+    margin-left: 50%;
+    margin-right: 50%;
+    color: #283d45;
+}
+
+
+.quantity {
+    color: #06c085;
+    border-color: #06c085;
+    background-color: transparent;
+    margin: 5px;
+    font-size: 20px;
+}
+
+.media {
+    width: 250px;
+    height: 250px;
+   
 }
 
 @media screen and (min-width:250px) and (max-width: 500px) {
@@ -36,6 +59,8 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
+    color: #283d45;
 }
 
 img {
