@@ -4,7 +4,11 @@
 
 Selling merchandise in the modern era requires digital solutions. For this project, you'll be tasked with designing and constructing an online student store for the College of Codepath. The application entails a frontend user interface for potential customers to peruse the goods, and a backend API to handle data management. The API will be built with Node and Express and the UI will be built with React.
 
-// Include your gif here
+![gif1](https://user-images.githubusercontent.com/35511922/175759705-35d217b2-5914-43fc-b2b6-26b12d7d4c58.gif)
+![gif2](https://user-images.githubusercontent.com/35511922/175759708-25d3dae4-fbc5-4f80-90d7-e1c51265f7a2.gif)
+![gif3](https://user-images.githubusercontent.com/35511922/175759709-f9e4cb3a-87af-41b1-983c-b4e3143f4972.gif)
+![gif4](https://user-images.githubusercontent.com/35511922/175759715-ff8df5a0-d311-474b-859d-5337291177a4.gif)
+
 
 ### Application Features
 
