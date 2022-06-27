@@ -9,7 +9,9 @@ export default function Home({handleAddItemToCart, handleRemoveItemToCart, setIs
   if(isFetching){
     return null;
   }
-
+  // If the web page is not currently completing a GET request, define categories and use onChange functions to
+  // handle filtering (these functions call functions in App.jsx)
+  // Create search bar and product grid
   return (
     <div className="home">
       <Hero/>

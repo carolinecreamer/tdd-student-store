@@ -1,18 +1,23 @@
 import * as React from "react"
 import "./Sidebar.css"
 
-export default function ShoppingCart({shoppingCart, products, setTotal, total, setSubtotal}) {
+export default function ShoppingCart({shoppingCart, products, setTotal, total}) {
+    // Iterate over the items in the shopping cart in order to calculate the cost of the order
     let cost = 0;
     shoppingCart.map((item, idx) => 
         cost += (products.find((i)=>i.id === item.itemId)).price * item.quantity
     )
+
+    // Add tax
     setTotal((cost + (cost * 0.0875)).toFixed(2))
 
+    // If there aren't items in the cart, output a message signaling for the user to add items to the cart
     if (shoppingCart.length == 0) {
         return (
             <p className="notification">No items added to cart yet. Start shopping now!</p>
         )
     }
+    // Display the items and cost of the order
     else {
     return (
         <>

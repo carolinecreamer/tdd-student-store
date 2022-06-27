@@ -2,6 +2,7 @@ import * as React from "react"
 import "./Contact.css"
 
 export default function Contact() {
+    // Create contact info section at the bottom of the web page
   return (
     <div className="contact">
       <p className="contactText">Email: code@path.org</p>

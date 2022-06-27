@@ -3,6 +3,8 @@ import "./Sidebar.css"
 
 export default function CheckoutForm({checkoutForm, handleOnCheckoutFormChange, 
     handleOnSubmitCheckoutForm, success, confirmation}) {
+        // Create a checkout form that calls functions in App.jsx to handle checkout behavior
+        // Outputs a success or error message depending on the outcome of App.jsx functions
     return (
         <div className="checkout-form">
             <input className="checkout-form-input" type="email" name="email" placeholder="student@codepath.org" 

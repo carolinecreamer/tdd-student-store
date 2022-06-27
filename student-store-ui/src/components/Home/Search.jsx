@@ -4,6 +4,7 @@ import Hero from "./Hero"
 import "./Home.css"
 
 export default function Search({setSearch, isFetching}) {
+  // If the user types a search term into the search bar, call functions in App.jsx to handle behavior
   if(isFetching){
     return null;
   }

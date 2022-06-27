@@ -2,6 +2,7 @@ import * as React from "react"
 import "./Navbar.css"
 import Logo from "./Logo"
 
+// Define a navigation bar and instantiate its navigation links
 export default function Navbar({ navLinks}) {
   return (
     <div className="navbar">
@@ -13,6 +14,7 @@ export default function Navbar({ navLinks}) {
   )
 }
 
+// Iterate over all of the links to instantiate each of them
 export function NavLinks({ navLinks }) {
   return <div className="nav-links">
       {navLinks.map((item, idx) => 
@@ -21,6 +23,7 @@ export function NavLinks({ navLinks }) {
     </div>
 }
 
+// Define a navigation link
 export function NavLink({ navLink }) {
   return (
     <span className={navLink.className}>

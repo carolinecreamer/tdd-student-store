@@ -8,10 +8,8 @@ import NotFound from "../NotFound/NotFound";
 export default function ProductDetail( {handleAddItemToCart, handleRemoveItemToCart, setIsFetching, isFetching}) {
     const [product, setProduct] = useState([]);
     const [error, setError] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
-    const [shoppingCart, setShoppingCart] = useState([]);
-    const [checkoutForm, setCheckoutForm] = useState("");
-
+    // Make a GET request to get the unique product's information from the API
+    // Display the product's Product View component or show the Not Found component if the item doesn't exist
     const params = useParams();
     params.productId;;
     useEffect(()=>{

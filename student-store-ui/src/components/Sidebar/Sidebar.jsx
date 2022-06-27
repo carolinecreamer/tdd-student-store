@@ -4,6 +4,8 @@ import CheckoutForm from "./CheckoutForm"
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import "./Sidebar.css"
 
+// If the sidebar is open, update its class name to determine display and show the shopping cart and checkout form
+// If the sidebar is closed, update its class name to hide the shopping cart and checkout form
 export default function Sidebar({ isOpen, shoppingCart, products, checkoutForm, handleOnCheckoutFormChange, 
   handleOnSubmitCheckoutForm, handleOnToggle, setTotal, total, success, confirmation, response}) {
     if (isOpen) {

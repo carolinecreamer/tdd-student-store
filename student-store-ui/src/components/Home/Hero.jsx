@@ -3,6 +3,7 @@ import * as React from "react"
 import "./Home.css"
 
 export default function Hero({products, handleAddItemToCart, handleRemoveItemToCart}) {
+  // Create hero banner
   return (
     <div className="hero">
       <h1 className="intro">Welcome!</h1>

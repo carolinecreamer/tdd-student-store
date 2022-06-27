@@ -14,6 +14,7 @@ import { useState } from "react"
 
 
 export default function App() {
+  // Declaring state variables
   const [products, setProducts] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
   const [error, setError] = useState("");
@@ -29,6 +30,8 @@ export default function App() {
   const [subtotal, setSubtotal] = useState("");
   const [response, setResponse] = useState("");
 
+  // Iterate over the array of items in the shopping cart. If the item already exists in the cart, increment its
+  // quantity by one; otherwise, add the item to the cart with a quantity of one
   function handleAddItemToCart(productId) {
     let found = false;
     shoppingCart.forEach((item)=>{
@@ -46,6 +49,9 @@ export default function App() {
     setShoppingCart([...shoppingCart])
   }
 
+  // Iterate over the shopping cart. If the item has a quantity greater than 0, decrement its quantity by one
+  // If the quantity after decrementing is equal to zero, remove the item from the array of items in the 
+  // shopping cart.
   function handleRemoveItemToCart(productId) {
     shoppingCart.forEach((item, idx)=>{
       if (item.itemId === productId) {
@@ -60,6 +66,9 @@ export default function App() {
     });
   }
 
+  // If the input field is the user's name, change the user's name in the checkout form state variable to the 
+  // input string. If the input field is the user's email, change the user's email in the checkout form state 
+  // variable to the input string.
   function handleOnCheckoutFormChange(item, type) {
     if (type == "name") {
       setCheckoutForm({"name": item, "email": checkoutForm.email})
@@ -69,12 +78,14 @@ export default function App() {
     }
   }
 
+  // Send a POST request containing the user's information (name & email) and their order (shopping cart array)
   function handleOnSubmitCheckoutForm() {
     axios.post('https://codepath-store-api.herokuapp.com/store/', {
       user: checkoutForm,
       shoppingCart: shoppingCart
-      // iterate over cart
     })
+    // If the response code is a success code, reset the shopping cart and checkout form state variables
+    // Change state variables to signal to other components that the POST request was successful
     .then(function (response) {
       setResponse(response);
       setConfirmation(true);
@@ -84,11 +95,12 @@ export default function App() {
       // if response = 201 output success message
     })
     .catch(function (error) {
-      console.log(error);
+      console.error(error);
       setConfirmation(true);
     });
   }
 
+  // For the siderbar component, changes the isOpen state variable to determine if the sidebar is open or not
   function handleOnToggle() {
     if (isOpen) {
       setIsOpen(false);
@@ -98,10 +110,12 @@ export default function App() {
     }
   }
 
+  // Change the category state variable to filter items by category
   function handleChangeCategory(categoryName) {
     setCategory(categoryName);
   }
 
+  // Iterate over items and only show items in selected category
   function filtered(p){
     if (category === "all-categories") {
       setProductsFiltered(p);
@@ -111,16 +125,15 @@ export default function App() {
     }
   }
 
-  function handleSearch(search) {
-    setSearch(search);
-  }
-
+  // Filter items by search term by filtering the items based on if they contain the search term
   function searched(p) {
     if (searched != "") {
       setProductsFiltered(p.filter((item)=>item.name.toLowerCase().includes(search.toLowerCase())));
     }
   }
 
+
+  // Make GET request to obtain items in the store from the API
   React.useEffect(()=>{
     setIsFetching(true)
 
@@ -135,10 +148,12 @@ export default function App() {
     setup();
   },[])
   
+  // Filter items by category
   React.useEffect(()=>{
     filtered(products)
   },[category])
 
+  // Filter items by search term
   React.useEffect(()=>{
     searched(products)
   },[search])
@@ -146,9 +161,11 @@ export default function App() {
 
 
   return (
+    // Set routes to determine which components are shown when
     <div className="app">
       <BrowserRouter>
       <Routes>
+      {/* Home page */}
       <Route path ="/" element={ <main>
           <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                    checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
@@ -161,6 +178,7 @@ export default function App() {
           <Contact/>
           <Footer />
         </main>}/>
+        {/* Product page */}
         <Route path="/product/:productId" element={
           <main>
             <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
@@ -174,6 +192,8 @@ export default function App() {
             <Footer/>
           </main>
         }/>
+
+        {/* All other pages */}
         <Route path="/product/*" element={
           <main>
             <Navbar key="NavBar" navLinks={navLinks}/>
