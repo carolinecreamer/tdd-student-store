@@ -4,7 +4,11 @@
 
 Selling merchandise in the modern era requires digital solutions. For this project, you'll be tasked with designing and constructing an online student store for the College of Codepath. The application entails a frontend user interface for potential customers to peruse the goods, and a backend API to handle data management. The API will be built with Node and Express and the UI will be built with React.
 
-// Include your gif here
+![gif1](https://user-images.githubusercontent.com/35511922/175759705-35d217b2-5914-43fc-b2b6-26b12d7d4c58.gif)
+![gif2](https://user-images.githubusercontent.com/35511922/175759708-25d3dae4-fbc5-4f80-90d7-e1c51265f7a2.gif)
+![gif3](https://user-images.githubusercontent.com/35511922/175759709-f9e4cb3a-87af-41b1-983c-b4e3143f4972.gif)
+![gif4](https://user-images.githubusercontent.com/35511922/175759715-ff8df5a0-d311-474b-859d-5337291177a4.gif)
+
 
 ### Application Features
 
@@ -285,20 +289,22 @@ The following specifications were met on the Express backend and the React front
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I thought that the labs did help prepare me for the project by gradually introducing me to React. 
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+If I had more time, I would attempt more of next week's stretch features, such as scrolling down on the page when buttons in the navigation bar are clicked. I also would improve the UI.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
-
+My features worked as planned. However, I didn't like the layout of my sidebar and will change the CSS for next week's submission.
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+- React-icons(https://react-icons.github.io/react-icons/)
+- React-router-dom(https://www.npmjs.com/package/react-router-dom)
+- Axios(https://www.npmjs.com/package/react-axios)
 
 ### Shout out
+My manager, Iris, and my TA, Vincent!
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
