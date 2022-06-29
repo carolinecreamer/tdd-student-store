@@ -145,5 +145,53 @@
       "price": 999.99
     }
   ],
-  "purchases": []
+  "purchases": [
+    {
+      "id": 3,
+      "name": "uyg",
+      "email": "some",
+      "total": "h",
+      "receipt": "s"
+    },
+    {
+      "id": 3,
+      "name": "uyg",
+      "email": "some",
+      "total": "h",
+      "receipt": "s"
+    },
+    {
+      "id": 3,
+      "name": "uyg",
+      "email": "some",
+      "total": "h",
+      "receipt": "s"
+    },
+    {
+      "id": 3,
+      "name": "uyg",
+      "email": "some",
+      "total": "h",
+      "receipt": "s"
+    },
+    {
+      "id": 3,
+      "name": "uyg",
+      "email": "some",
+      "total": "h",
+      "receipt": "s"
+    },
+    {
+      "id": 5,
+      "name": "uyg",
+      "email": "some",
+      "total": "4.87",
+      "receipt": [
+        "Showing receipt for uyg available at some:",
+        "3 total undefined purchased at a cost of $1.5 for a total cost of $4.5",
+        "Before taxes, the subtotal was $4.5",
+        "After taxes and fees were applied, the total comes out to $4.87"
+      ]
+    }
+  ]
 }
