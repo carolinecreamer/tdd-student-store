@@ -289,15 +289,15 @@ The following specifications were met on the Express backend and the React front
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-I thought that the labs did help prepare me for the project by gradually introducing me to React. 
+I thought that the labs did help prepare me for the project by gradually introducing me to React and Express. I thought that Lab 2 of both weeks were the most helpful. 
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-If I had more time, I would attempt more of next week's stretch features, such as scrolling down on the page when buttons in the navigation bar are clicked. I also would improve the UI.
+If I had more time, I would attempt more of  stretch features, such as filtering orders by email. I also would improve the UI.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-My features worked as planned. However, I didn't like the layout of my sidebar and will change the CSS for next week's submission.
+My features worked as planned. However, I don't like the UI of the sidebar and past orders.
 ### Open-source libraries used
 
 - React-icons(https://react-icons.github.io/react-icons/)
