@@ -2,12 +2,19 @@ import * as React from "react"
 import ProductGrid from "../ProductDetail/ProductGrid"
 import Hero from "./Hero"
 import Search from "./Search"
+import NotFound from "../NotFound/NotFound"
 import "./Home.css"
 
 export default function Home({handleAddItemToCart, handleRemoveItemToCart, setIsFetching, isFetching, productsFiltered, 
                               handleChangeCategory, setSearch, category}) {
   if(isFetching){
     return null;
+  }
+
+  if (productsFiltered.length === 0) {
+    return (
+        <NotFound/>
+    )
   }
   // If the web page is not currently completing a GET request, define categories and use onChange functions to
   // handle filtering (these functions call functions in App.jsx)

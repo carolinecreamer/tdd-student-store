@@ -2,6 +2,7 @@ import * as React from "react"
 import ShoppingCart from "./ShoppingCart"
 import CheckoutForm from "./CheckoutForm"
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import {Link} from "react-router-dom"
 import "./Sidebar.css"
 
 // If the sidebar is open, update its class name to determine display and show the shopping cart and checkout form
@@ -23,6 +24,8 @@ export default function Sidebar({ isOpen, shoppingCart, products, checkoutForm, 
               idx!=0?<li>{item}</li>:null
             )}
           </ul></div>: null}
+
+          <Link  to={`/orders`} className="media" id="past">See past orders</Link>
           
       </section>
     }

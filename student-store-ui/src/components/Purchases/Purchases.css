@@ -1,0 +1,12 @@
+.purchase {
+    color: #283d45;
+    margin: 20px;
+}
+
+.purchases{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 175px;
+}

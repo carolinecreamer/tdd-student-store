@@ -1,0 +1,12 @@
+.notFound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    margin-left: 175px;
+}
+
+#notFound {
+    color:#283d45; 
+    font-weight: bold;
+}

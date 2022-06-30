@@ -6,6 +6,7 @@ import ProductDetail from "../ProductDetail/ProductDetail"
 import Contact from "../Contact/Contact"
 import NotFound from "../NotFound/NotFound"
 import Footer from "../Footer/Footer"
+import Purchases from "../Purchases/Purchases"
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import "./App.css"
 //import { navLinks } from "../../constants.js"
@@ -16,6 +17,7 @@ import { useState } from "react"
 export default function App() {
   // Declaring state variables
   const [products, setProducts] = useState([]);
+  const [purchases, setPurchases] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
   const [error, setError] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -129,9 +131,7 @@ export default function App() {
   function searched(p) {
     if (searched != "") {
       setProductsFiltered(p.filter((item)=>item.name.toLowerCase().includes(search.toLowerCase())));
-      /*if (productsFiltered === "") {
-
-      }*/
+      
     }
   }
 
@@ -144,7 +144,7 @@ export default function App() {
       const response = await axios.get(`http://localhost:3001/store/`).catch((err)=>{
         setError(err)
       })
-      filtered(response.data.products)
+      filtered(response.data.products);
       setProducts(response.data.products)
       setIsFetching(false)
     }
@@ -170,7 +170,7 @@ export default function App() {
       <Routes>
       {/* Home page */}
       <Route path ="/" element={ <main>
-          <Sidebar id="sidebar" handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
+          <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                    checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                    handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} setTotal={setTotal} total={total}
                    success={success} confirmation={confirmation} response={response}/>
@@ -185,7 +185,7 @@ export default function App() {
         {/* Product page */}
         <Route path="/product/:productId" element={
           <main>
-            <Sidebar id="sidebar" handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
+            <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                      checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                      handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} setTotal={setTotal} total={total}
                      success={success} confirmation={confirmation} response={response}/>
@@ -201,7 +201,7 @@ export default function App() {
         <Route path="/product/*" element={
           <main>
             <Navbar key="NavBar" handleOnToggle={handleOnToggle}/>
-            <Sidebar id="sidebar" handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
+            <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                      checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                      handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
             <NotFound/>
@@ -209,6 +209,18 @@ export default function App() {
             <Footer/>
           </main>
         }/>
+
+        <Route path="/orders" element={
+          <main>
+          <Navbar key="NavBar" handleOnToggle={handleOnToggle}/>
+          <Sidebar  handleOnToggle={handleOnToggle} isOpen={false} products={products} shoppingCart={shoppingCart} 
+                   checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
+                   handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
+          <Purchases purchases={purchases} setPurchases={setPurchases} isFetching={isFetching} setIsFetching={setIsFetching} setError={setError}/>
+          <Contact/>
+          <Footer/>
+        </main>
+        } />
         </Routes>
       </BrowserRouter>
     </div>

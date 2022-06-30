@@ -1,6 +1,11 @@
 .closed {
     width: 150px;
 }
+
+#past {
+  color: white;
+  align-self: center;
+}
 .sidebar {
     background: #283d45 ;
     height: 100vh;
