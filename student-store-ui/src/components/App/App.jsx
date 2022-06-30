@@ -8,7 +8,7 @@ import NotFound from "../NotFound/NotFound"
 import Footer from "../Footer/Footer"
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import "./App.css"
-import { navLinks } from "../../constants.js"
+//import { navLinks } from "../../constants.js"
 import axios from "axios"
 import { useState } from "react"
 
@@ -129,6 +129,9 @@ export default function App() {
   function searched(p) {
     if (searched != "") {
       setProductsFiltered(p.filter((item)=>item.name.toLowerCase().includes(search.toLowerCase())));
+      /*if (productsFiltered === "") {
+
+      }*/
     }
   }
 
@@ -167,25 +170,26 @@ export default function App() {
       <Routes>
       {/* Home page */}
       <Route path ="/" element={ <main>
-          <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
+          <Sidebar id="sidebar" handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                    checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                    handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} setTotal={setTotal} total={total}
                    success={success} confirmation={confirmation} response={response}/>
-          <Navbar key="NavBar" navLinks={navLinks} setIsFetching={setIsFetching}/>
+          <Navbar key="NavBar" handleOnToggle={handleOnToggle}/>
           <Home category = {category} isFetching={isFetching} products={products} handleAddItemToCart={handleAddItemToCart} 
                 handleRemoveItemToCart={handleRemoveItemToCart} setIsFetching={setIsFetching} 
                 productsFiltered={productsFiltered} handleChangeCategory={handleChangeCategory} setSearch={setSearch}/>
-          <Contact/>
+
+          <Contact id="contact"/>
           <Footer />
         </main>}/>
         {/* Product page */}
         <Route path="/product/:productId" element={
           <main>
-            <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
+            <Sidebar id="sidebar" handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                      checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                      handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} setTotal={setTotal} total={total}
                      success={success} confirmation={confirmation} response={response}/>
-            <Navbar key="NavBar" navLinks={navLinks}/>
+            <Navbar key="NavBar" handleOnToggle={handleOnToggle}/>
             <ProductDetail setIsFetching={setIsFetching} isFetching={isFetching} 
                            handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
             <Contact/>
@@ -196,8 +200,8 @@ export default function App() {
         {/* All other pages */}
         <Route path="/product/*" element={
           <main>
-            <Navbar key="NavBar" navLinks={navLinks}/>
-            <Sidebar handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
+            <Navbar key="NavBar" handleOnToggle={handleOnToggle}/>
+            <Sidebar id="sidebar" handleOnToggle={handleOnToggle} isOpen={isOpen} products={products} shoppingCart={shoppingCart} 
                      checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
                      handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
             <NotFound/>

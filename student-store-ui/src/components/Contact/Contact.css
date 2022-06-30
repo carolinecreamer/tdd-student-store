@@ -3,6 +3,7 @@
     background-color: #06c085;
     color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     
 }
@@ -11,4 +12,20 @@
     margin: 10px;
     align-self: center;
     font-size: 15px;;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left:175px;
+}
+
+#contact {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 175px;
 }
