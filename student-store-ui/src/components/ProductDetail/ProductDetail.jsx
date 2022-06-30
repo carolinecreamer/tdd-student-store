@@ -14,7 +14,7 @@ export default function ProductDetail( {handleAddItemToCart, handleRemoveItemToC
     params.productId;;
     useEffect(()=>{
         let setup = async()=>{
-          const response = await axios.get(`https://codepath-store-api.herokuapp.com/store/${params.productId}`).catch((err)=>{
+          const response = await axios.get(`http://localhost:3001/store/${params.productId}`).catch((err)=>{
             setError(err)
           })
           setProduct(response.data.product)

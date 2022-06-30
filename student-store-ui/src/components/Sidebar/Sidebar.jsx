@@ -8,6 +8,7 @@ import "./Sidebar.css"
 // If the sidebar is closed, update its class name to hide the shopping cart and checkout form
 export default function Sidebar({ isOpen, shoppingCart, products, checkoutForm, handleOnCheckoutFormChange, 
   handleOnSubmitCheckoutForm, handleOnToggle, setTotal, total, success, confirmation, response}) {
+    console.log(response);
     if (isOpen) {
       return <section className="sidebar open">
           <button onClick={()=>handleOnToggle()} className="toggle-button"><AiOutlineArrowLeft/></button>
@@ -16,11 +17,12 @@ export default function Sidebar({ isOpen, shoppingCart, products, checkoutForm, 
           setTotal={setTotal} total={total}/>
           <CheckoutForm isOpen={isOpen} shoppingCart={shoppingCart} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} 
           handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} success={success} confirmation={confirmation}/>
-          {response != "" ? <ul>
-            {response.data.purchase.receipt.lines.map((item) =>
-              <li>{item}</li>
+          {response != "" ? <div><p>{response.data.purchase.receipt[0]}</p>
+          <ul>
+            {response.data.purchase.receipt.map((item,idx) =>
+              idx!=0?<li>{item}</li>:null
             )}
-          </ul> : null}
+          </ul></div>: null}
           
       </section>
     }

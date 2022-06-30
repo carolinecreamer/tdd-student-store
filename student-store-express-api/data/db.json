@@ -192,6 +192,120 @@
         "Before taxes, the subtotal was $4.5",
         "After taxes and fees were applied, the total comes out to $4.87"
       ]
+    },
+    {
+      "id": 6,
+      "name": "uyg",
+      "email": "some",
+      "total": "4.87",
+      "receipt": [
+        "Showing receipt for uyg available at some:",
+        "3 total undefined purchased at a cost of $1.50 for a total cost of $4.50",
+        "Before taxes, the subtotal was $4.50",
+        "After taxes and fees were applied, the total comes out to $4.87"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "caroline",
+      "email": "ccreamer@fb.com",
+      "total": "14.56",
+      "receipt": [
+        "Showing receipt for caroline available at ccreamer@fb.com:",
+        "3 total undefined purchased at a cost of $0.99 for a total cost of $2.97",
+        "3 total undefined purchased at a cost of $1.50 for a total cost of $4.50",
+        "2 total undefined purchased at a cost of $2.99 for a total cost of $5.98",
+        "Before taxes, the subtotal was $13.45",
+        "After taxes and fees were applied, the total comes out to $14.56"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "hi",
+      "email": "ccreamer@fb.com",
+      "total": "5.39",
+      "receipt": [
+        "Showing receipt for hi available at ccreamer@fb.com:",
+        "2 total undefined purchased at a cost of $0.99 for a total cost of $1.98",
+        "2 total undefined purchased at a cost of $1.50 for a total cost of $3.00",
+        "Before taxes, the subtotal was $4.98",
+        "After taxes and fees were applied, the total comes out to $5.39"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "hi",
+      "email": "ccreamer@fb.com",
+      "total": "7.01",
+      "receipt": [
+        "Showing receipt for hi available at ccreamer@fb.com:",
+        "2 total undefined purchased at a cost of $0.99 for a total cost of $1.98",
+        "3 total undefined purchased at a cost of $1.50 for a total cost of $4.50",
+        "Before taxes, the subtotal was $6.48",
+        "After taxes and fees were applied, the total comes out to $7.01"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "hi",
+      "email": "ccreamer@fb.com",
+      "total": "11.34",
+      "receipt": [
+        "Showing receipt for hi available at ccreamer@fb.com:",
+        "3 total undefined purchased at a cost of $1.50 for a total cost of $4.50",
+        "2 total undefined purchased at a cost of $2.99 for a total cost of $5.98",
+        "Before taxes, the subtotal was $10.48",
+        "After taxes and fees were applied, the total comes out to $11.34"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "hi",
+      "email": "ccreamer@fb.com",
+      "total": "6.50",
+      "receipt": [
+        "Showing receipt for hi available at ccreamer@fb.com:",
+        "4 total undefined purchased at a cost of $1.50 for a total cost of $6.00",
+        "Before taxes, the subtotal was $6.00",
+        "After taxes and fees were applied, the total comes out to $6.50"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "bn",
+      "email": "f",
+      "total": "1.07",
+      "receipt": [
+        "Showing receipt for bn available at f:",
+        "1 total undefined purchased at a cost of $0.99 for a total cost of $0.99",
+        "Before taxes, the subtotal was $0.99",
+        "After taxes and fees were applied, the total comes out to $1.07"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "hm",
+      "email": "hg",
+      "total": "43.28",
+      "receipt": [
+        "Showing receipt for hm available at hg:",
+        "2 total undefined purchased at a cost of $19.99 for a total cost of $39.98",
+        "Before taxes, the subtotal was $39.98",
+        "After taxes and fees were applied, the total comes out to $43.28"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "uyg",
+      "email": "some",
+      "total": "9.74",
+      "receipt": [
+        "Showing receipt for uyg available at some:",
+        "3 total undefined purchased at a cost of $1.50 for a total cost of $4.50",
+        "3 total undefined purchased at a cost of $1.50 for a total cost of $4.50",
+        "Before taxes, the subtotal was $9.00",
+        "After taxes and fees were applied, the total comes out to $9.74"
+      ]
     }
   ]
 }

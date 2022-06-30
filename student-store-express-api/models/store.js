@@ -33,14 +33,13 @@ class StudentStore {
 
     static createReceipt(shoppingCart, subtotal, total, products, user) {
         let receipt = ["Showing receipt for " + user.name + " available at " + user.email + ":",];
-      
 
         shoppingCart.forEach((item, idx) => {
             receipt.push(item.quantity + " total " + item.name + " purchased at a cost of $" + 
-        (this.fetchProductById(item.itemId).price) + " for a total cost of $" 
-        + (item.quantity * this.fetchProductById(item.itemId).price),);
+        (this.fetchProductById(item.itemId).price).toFixed(2) + " for a total cost of $" 
+        + (item.quantity * this.fetchProductById(item.itemId).price).toFixed(2),);
         });
-        receipt.push("Before taxes, the subtotal was $" + subtotal,);
+        receipt.push("Before taxes, the subtotal was $" + subtotal.toFixed(2),);
         receipt.push("After taxes and fees were applied, the total comes out to $" + total);
         
         return receipt;
@@ -67,23 +66,36 @@ class StudentStore {
             throw new BadRequestError('No user information found to checkout with.');
         }
 
+        let temp = []
+        try{
+            shoppingCart.forEach((item) => {
+                if (temp.includes(item.itemId)) {
+                    throw new BadRequestError('Duplicate items in the cart.');
+                }
+    
+                temp.push(item.itemId);
+            })
+        }
+        catch(err){
+            console.log(err)
+            throw err
+        }
+        
+
         const products = storage.get('products').value();
         const subtotal = StudentStore.calculateSubtotal(shoppingCart);
         const total    = StudentStore.totalWithTax(subtotal).toFixed(2);
         const receipt = StudentStore.createReceipt(
             shoppingCart, subtotal, total, products, user
         );
-
-
+        console.log(receipt)
         const purchase = {
             id: StudentStore.listPurchases().length,
             name: user.name,
             email: user.email,
             total: total,
             receipt: receipt,
-        };
-
-        
+        };   
 
         storage.get('purchases').push(purchase).write();
         return purchase

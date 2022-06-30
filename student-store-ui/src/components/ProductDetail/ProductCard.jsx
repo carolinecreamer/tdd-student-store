@@ -12,7 +12,7 @@ export default function ProductCard( {product, productId, quantity, handleAddIte
       <Link onClick={()=>setIsFetching(true)} to={`/product/${productId}`} className="media"><img src={product.image}/></Link>
         
         <h3 className="product-name text">{product.name}</h3>
-        <p className="product-price text">{product.price.toFixed(2)}</p>
+        <p className="product-price text">{product.price?.toFixed(2)}</p>
         <div className="quantity">
             <button className="quantity" onClick={()=>handleAddItemToCart(productId)}>+</button>
             <button className="quantity"onClick={()=>handleRemoveItemToCart(productId)}>-</button>   
