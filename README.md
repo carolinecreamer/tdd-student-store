@@ -8,6 +8,8 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 ![gif2](https://user-images.githubusercontent.com/35511922/175759708-25d3dae4-fbc5-4f80-90d7-e1c51265f7a2.gif)
 ![gif3](https://user-images.githubusercontent.com/35511922/175759709-f9e4cb3a-87af-41b1-983c-b4e3143f4972.gif)
 ![gif4](https://user-images.githubusercontent.com/35511922/175759715-ff8df5a0-d311-474b-859d-5337291177a4.gif)
+![ezgif-1-1e6500cc53](https://user-images.githubusercontent.com/35511922/176797629-498a3c34-f430-4899-b395-f15d4421ad16.gif)
+![ezgif-1-269b9f3a5b](https://user-images.githubusercontent.com/35511922/176797634-3409e4df-2c07-4bbe-b823-fa27f4bcb837.gif)
 
 
 ### Application Features
